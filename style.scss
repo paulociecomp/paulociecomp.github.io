@@ -22,7 +22,6 @@ html {
 body {
 	background: $white;
   font-family: 'Roboto';
-  color: $darkGray;
 }
 
 .container {
@@ -31,6 +30,17 @@ body {
   padding: 0 10px;
   width: 100%;
   line-height: 1.5;
+}
+
+h1,
+h2,
+p,
+i,
+a,
+.first-letter,
+.authorName a {
+  color: rgba(0, 0, 0, 0.84);
+  text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -78,9 +88,11 @@ h4 {
 }
 
 p {
-  margin: 15px 0;
-  line-height: 1.58;
+  margin-top: 21px;
+  font-family: "Lora";
+  font-size: 18px;
   letter-spacing: -0.03px;
+  line-height: 1.58;
 }
 
 a {
