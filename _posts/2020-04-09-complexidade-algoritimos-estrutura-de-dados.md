@@ -3,23 +3,25 @@ layout: post
 title: Complexidade de algoritmos - Estrutura de Dados
 ---
 
+![https://unsplash.com/@markusspiske](https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+
 Na faculdade, aprendemos de uma forma, não muito didática, como analisar performance e complexidade de algoritmos. Muitos desenvolvedores não precisam se aprofundar em conceitos de matemática concreta para desenvolver softwares empresariais.
 
 No entanto, fundamentos de ciência da computação são importantes, principalmente quando lidamos com estruturas de dados complexas. Nesta série, iremos abordar como identificar e lidar com complexidade de algoritmos de uma forma inclusiva e pouco acadêmica.
 
 ## Estrutura de Dados
 
-Computação é sobre manipular dados. Um dos grandes desafios que temos como desenvolvedores é descobrir formas eficientes de lidar com esses dados. Estruturas de dados são maneiras de organizar esses dados. Vamos ver que, a maneira como organizamos esses dados, causa impacto na performance de nossos programas. Uma função lenta que é executada só uma vez, talvez não cause problemas, mas quando ela for executada por milhares de usuários de uma aplicação web, podemos ter dores de cabeça.
+Computação é sobre manipular dados. Um dos grandes desafios que temos como desenvolvedores é descobrir formas eficientes de lidar com esses dados. Estruturas de dados são maneiras de organizá-los. Vamos ver que, a maneira como os organizamos, causa impacto na performance de nossos programas. Uma função lenta que é executada uma única vez, talvez não cause efeitos colaterais, mas quando ela for executada por milhares de usuários de uma aplicação web, podemos ter problemas de performance.
 
-O array é uma estrutura de dados bem básica, no entanto é extremamente versátil e muito utilizada. Vamos trabalhar com ela aqui.
+O array é uma estrutura de dados básica, no entanto é extremamente versátil e muito utilizada. Vamos trabalhar com ela neste post.
 
 ```ruby
   array = ["ipa", "apa", "pilsen", "larger", "stout"]
 ```
 
-Temos um array de 5 elementos string. O index é um número que identifica onde um determinado elemento está posicionado no array. Geralmente o index começa por 0. Então o elemento de index 0 é a "ipa", o de index 1 é a "apa", e assim por diante.
+Temos um array de 5 elementos string. O ***index*** é um número que identifica onde um determinado elemento está posicionado no array. Geralmente o ***index*** começa por 0. Então o elemento de ***index*** 0 é a "ipa", o de ***index*** 1 é a "apa", e assim por diante.
 
-Para que possamos iniciar o estudo de performance, precisamos, primeiro, compreender como interagir com dos dados. Na maioria das estruturas de dados, temos basicamente 4 operações:
+Para que possamos iniciar nosso estudo de performance, precisamos, primeiro, compreender como interagir com os dados. Na maioria das estruturas de dados, temos basicamente 4 operações:
 
 -   Leitura (Read)
 
@@ -29,15 +31,15 @@ Para que possamos iniciar o estudo de performance, precisamos, primeiro, compree
 
 -   Deleção (Delete)
 
-Quando mensuramos a velocidade de uma operação, não medimos o tempo que a operação leva para ser executada, mas sim o número de etapas que ela leva para ser concluída. Se executarmos uma função em um computador e ela levar 10 segundos, em outro hardware ela pode levar mais tempo, em um supercomputador da NASA pode levar milissegundos. Isso não nos diz muita coisa.
+Quando mensuramos a velocidade de uma operação, não medimos o tempo que a operação leva para ser executada, mas sim, o número de etapas que ela leva para ser concluída. Se executarmos uma função em um computador e ela levar 10 segundos, em outro hardware ela pode levar mais tempo, ou, em um supercomputador da NASA, pode levar uma ordem de milissegundos. Isso não nos diz muita coisa sobre a performance de nosso algoritmo.
 
-Mas podemos dizer que, se uma operação A precisou de 5 etapas para ser concluída e uma operação B precisou de 1000 etapas, a operação A tem velocidade maior que B em qualquer modelo de hardware.
+Mas podemos dizer que, se uma operação **A** precisou de 5 etapas para ser concluída e uma operação **B** precisou de 1.000 etapas, a operação **A** tem velocidade maior que **B** em qualquer modelo de hardware.
 
 ## Velocidade das operações
 
-Olhando para o array de 5 elementos, podemos identificar facilmente quais são esses elementos e onde estão posicionados, mas o computador não possui olhos, então ele não possui conhecimento dos elementos do array. O que o computador conhece é onde o array começa e qual o seu tamanho.
+Olhando para o array de 5 elementos, podemos identificar facilmente quais são esses elementos e onde estão posicionados. Mas o computador não possui olhos, então ele não possui conhecimento dos elementos do array. O que o computador sabe é a posição em que o array começa e qual o seu tamanho.
 
-O que vemos:
+O que nós vemos:
 
 ```ruby
   ["ipa", "apa", "pilsen", "larger", "stout"]
@@ -49,23 +51,23 @@ O que o computador "vê":
   "[?, ?, ?, ?, ?]
 ```
 
-Para se obter um elemento do array, basta indicar qual seu index. Por exemplo, a[2] retorna a string "pilsen". Essa é a operação de **leitura** e ela possui apenas uma etapa, pois o ponteiro vai direto à posição indicada pelo index.
+Para se obter um elemento do array, basta indicar qual seu ***index***. Por exemplo, **a[2]** retorna a string "pilsen". Essa é a operação de **leitura** e ela possui apenas uma etapa, pois o ponteiro vai direto à posição indicada pelo ***index***.
 
 Diferente da leitura, quando queremos **pesquisar** algo no array, precisamos passar por várias etapas. Por exemplo, digamos que queremos saber se o array possui a string "larger".
 
--   Etapa #1: o computador verifica o index 0. Ele identifica que o valor é "ipa", diferente de larger.
+-   Etapa #1: o computador verifica o ***index*** 0. Ele identifica que o valor é "ipa", diferente de larger.
 
--   Etapa #2: o computador vai para o index 1 e verifica que não dá match.
+-   Etapa #2: o computador vai para o ***index*** 1 e verifica que não dá match com o elemento do array.
 
--   Etapa #3: o computador vai para o index 2. Também é diferente.
+-   Etapa #3: o computador vai para o ***index*** 2. Também é diferente.
 
--   Etapa 4#: o computador vai para o index 3 e finalmente encontra a string "larger".
+-   Etapa 4#: o computador vai para o ***index*** 3 e finalmente encontra a string "larger".
 
 Para o nosso array de 5 elementos, foram necessárias 4 etapas para encontrar um elemento. Mas, e se tivéssemos pesquisado por "stout"? Na pior das hipóteses, teremos que percorrer o array inteiro para encontrar um elemento. Para um array de 500 elementos, teremos 500 etapas. Para um array de 1.000 elementos, teremos 1.000 etapas. Para um array de N elementos, teremos, no máximo **N** etapas para encontrar um elemento. Isso é uma **pesquisa linear**. Enquanto a leitura precisa de 1 etapa, a pesquisa linear precisa de N etapas, logo a pesquisa linear é uma operação menos eficiente do que a leitura.
 
 Assim como a operação de pesquisa, a eficiência de uma operação de **inserção** vai depender de onde queremos inserir o elemento no array.
 
-Para inserir um elemento no final do array é muito simples. O computador sabe onde o array começa e sabe qual o tamanho do array. Então ele efetua um cálculo para saber em qual posição da memória ele irá inserir o novo elemento e ele faz isso em apenas uma etapa.
+Para inserir um elemento no final do array é muito simples. O computador sabe onde o array começa e sabe qual o seu tamanho. Então ele efetua um cálculo para saber em qual posição da memória ele irá inserir o novo elemento e ele faz isso em apenas uma etapa.
 
 ```ruby
   array<< "porter"
@@ -93,15 +95,15 @@ Mas e se quisermos inserir o elemento na posição 3? Será necessário arrastar
       ["ipa", "apa", "pilsen", ____, "larger", "stout"]
     ```
 
--   Etapa 3: inserir "porter" no index 3.
+-   Etapa 3: inserir "porter" no ***index*** 3.
 
     ```ruby
       ["ipa", "apa", "pilsen", "porter", "larger", "stout"]
     ```
 
-O pior cenário é ter que inserir o elemento no início do array, pois, será necessário mover todos os elementos do array com N etapas para mover os elementos e 1 etapa para a inserção. Logo, temos **N + 1** etapas.
+O pior cenário é ter que inserir o elemento no início do array, pois, será necessário mover todos os elementos do array com N etapas para mover os elementos e 1 etapa para a inserção. Logo, para a operação de inserção, temos **N + 1** etapas.
 
-E, finalmente, para deletar um elemento de um determinado index, por exemplo, do index 2:
+E, finalmente, para deletar um elemento de um determinado ***index***, por exemplo, do ***index*** 2:
 
 -   Etapa #1: "pilsen" é removida.
 
@@ -123,7 +125,7 @@ E, finalmente, para deletar um elemento de um determinado index, por exemplo, do
 
 Assim como a inserção, o pior cenário e ter que remover o primeiro elemento do array. Para um array de N elementos, teremos uma etapa para a deleção e N - 1 etapas para mover os elementos, logo a deleção precisa de **N** etapas.
 
-Existe um tipo de array que possui algumas peculiaridades que podem ser úteis para melhorar a performance de algumas operações, o array ordenado.
+Existe um tipo de array que possui algumas peculiaridades que podem ser úteis para melhorar a performance de algumas operações, o **array ordenado**.
 
 Imagine o seguinte cenário:
 
@@ -160,7 +162,7 @@ Em um array ordenado de 9 elementos, vamos pesquisar pelo valor 13.
       #Sendo que o valor é 25 e 13 é menor, 13 deve estar à esquerda.
     ```
 
--   Etapa #2: entre os elementos da esquerda, selecionamos o mais central. Como o número de elementos é par, tanto faz qual index escolher. Arbitrariamente escolhemos o index 1 e descobrimos que o valor é 5.
+-   Etapa #2: entre os elementos da esquerda, selecionamos o mais central. Como o número de elementos é par, tanto faz qual ***index*** escolher. Arbitrariamente escolhemos o ***index*** 1 e descobrimos que o valor é 5.
 
   ```ruby
     [?, 5, ?, ?, 25, ? ,? ,? ,?]
