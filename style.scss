@@ -9,6 +9,8 @@
 @import "variables";
 // Syntax highlighting @import is at the bottom of this file
 
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Lora|Playfair+Display:700i,900');
+
 /**************/
 /* BASE RULES */
 /**************/
@@ -19,7 +21,7 @@ html {
 
 body {
 	background: $white;
-  font: 18px/1.4 $helvetica;
+  font-family: 'Roboto';
   color: $darkGray;
 }
 
@@ -28,10 +30,11 @@ body {
   max-width: 740px;
   padding: 0 10px;
   width: 100%;
+  line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $helveticaNeue;
+  font-family: "Playfair Display", serif;
   color: $darkerGray;
   font-weight: bold;
 
@@ -45,14 +48,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 30px;
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  text-align: left;
+  margin-bottom: 8px;
   a {
     color: inherit;
   }
 }
 
 h2 {
-  font-size: 24px;
+  font-family: "Lato", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  padding: 0;
+  margin: 56px 0 -13px -1.883px;
+  text-align: left;
+  line-height: 34.5px;
+  letter-spacing: -0.45px;
 }
 
 h3 {
@@ -66,6 +79,8 @@ h4 {
 
 p {
   margin: 15px 0;
+  line-height: 1.58;
+  letter-spacing: -0.03px;
 }
 
 a {
@@ -75,6 +90,8 @@ a {
   &:hover, &:active {
     color: $blue;
   }
+  line-height: 1.58;
+  letter-spacing: -0.03px;
 }
 
 ul, ol {
@@ -253,12 +270,16 @@ nav {
 
 .post {
   blockquote {
-    margin: 1.8em .8em;
-    border-left: 2px solid $gray;
-    padding: 0.1em 1em;
-    color: $gray;
-    font-size: 22px;
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
     font-style: italic;
+    letter-spacing: -0.36px;
+    line-height: 44.4px;
+    overflow-wrap: break-word;
+    margin: 55px 0 33px 0;
+    /* text-align: center; */
+    color: rgba(0, 0, 0, 0.68);
+    padding: 0 0 0 50px;
   }
 
   .comments {
