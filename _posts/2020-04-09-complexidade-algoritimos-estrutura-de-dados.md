@@ -204,3 +204,6 @@ Aprendemos que velocidade não se mede por tempo e sim por etapas. Vimos algumas
 No próximo post, vamos entender como funciona a análise propriamente dita da complexidade de algoritmos, sem *blá blá blá* acadêmico, usando a famigerada **Notação O**, o que meu professor com PHD falhou miseravelmente em me explicar, mas que consegui aprender lendo um simples tutorial na internet.
 
 Até lá.
+
+- Parte 1: [Complexidade de algoritmos - Estrutura de Dados]
+- Parte 2: [Notação Big O para não matemáticos](/big-o-para-nao-matematicos/)
